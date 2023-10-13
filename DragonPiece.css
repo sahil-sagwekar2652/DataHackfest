@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.options ul {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    display: inline;
+    margin: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.textbox {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.videobox {
+    max-width: 100%;
+}
