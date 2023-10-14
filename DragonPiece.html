@@ -7,7 +7,9 @@
         .center {
             margin: 0 auto;
             width: 75%; /* Adjust width as needed */
+            text-align: center;
         }
+    
        
     </style>
 </head>
@@ -15,22 +17,29 @@
     
     <div class="center">
     <h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT"></a></h1>
-    
 
-    <label for="characters">Select Characters:</label>
-    <select id="characters" multiple>
+     
+    
+        <label for="characters">Select Characters:</label>
+    
+    <div class="centered-element">
+    <select id="characters" class="custom-select" multiple>
         <option value="character1">Goku</option>
         <option value="character2">Vegeta</option>
         <option value="character3">Krillin</option>
         <option value="character4">Luffy</option>
         <option value="character5">Zoro</option>
         <option value="character6">Sanji</option>
-    </select>
-
-    <label for="scenario">Enter Scenario:</label>
+      </select>
+    </div>
+    
+        <p>
+    <label for="scenario">Enter Scenario:</label></p>
     <textarea id="scenario" rows="4" cols="50"></textarea>
-
-    <button onclick="generateVideo()">Generate Video</button>
+        
+  
+ 
+    <p><button onclick="generateVideo()">Generate Video</button></p>
 
     
 
@@ -65,7 +74,7 @@
     </div>
     <script type="text/javascript" src="jquery.js">
     </script>
-    <script type="text/javascript" src="myscript.js">
+    <script type="text/javascript" src="DragonPiece.js">
     </script>
 
 </body>
