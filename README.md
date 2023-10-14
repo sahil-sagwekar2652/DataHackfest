@@ -1,4 +1,4 @@
-# DataHackfest
+# DragonPiece
 Pertains to the October 2023 MLH DataHackfest.
 
 As of 8:44 PM PST on OCTOBER 13, 2023:
