@@ -26,7 +26,7 @@ body {
 /* Selection panel for Characters */
 .centered-element {
     margin: 0 auto;
-    width: 50%; /* Adjust the width as needed */
+    width: 25%; /* Adjust the width as needed */
 }
 
 .select {
@@ -54,7 +54,7 @@ body {
 
 /* End Selection panel for Characters */
 
-/* Glow border
+/* Glow border */
 .box {
     position: relative;
     transform-style: preserve-3d;
@@ -62,14 +62,14 @@ body {
   .box::before {
     content: "";
     position: absolute;	
-    inset: 0px;
-    background: conic-gradient(from 90deg at 40% -25%, #ffd700, #f79d03, #ee6907, #e6390a, #de0d0d, #d61039, #cf1261, #c71585, #cf1261, #d61039, #de0d0d, #ee6907, #f79d03, #ffd700, #ffd700, #ffd700);
+    inset: 2px;
+    background: conic-gradient(from 90deg at 40% -25%, #ffd700, #ead2a8, #93cfdb, #0a71e6, #0b2bdf, #1310b8, #3936e7, #19156b, #541515, #d61039, #de0d0d, #ee6907, #f79d03, #e7a83a, #e7b349, #ffd700);
     filter: blur(10px);
     transform: translate3d(0px,0px,-1px);
     clip-path: polygon(-100vmax -100vmax,100vmax -100vmax,100vmax 100vmax,-100vmax 100vmax,-100vmax -100vmax,0 0,0 100%,100% 100%,100% 0,0 0);
     pointer-events: none;
   }
-*/
+
 .textbox {
     margin: 20px 0;
     padding: 20px;
