@@ -5,7 +5,8 @@ As of 8:44 PM PST on OCTOBER 13, 2023:
 This repository contains a rough draft of the .HTML, .CSS, .JS, and .PNG logo "DragonPiece" files.
 The function is not actively attached to the backend development. This is effectively a mockup (at the least) which should work in browser. 
 
-Note for backend engineers:
+Note for backend engineers (script included in .HTML file):
+    
     // You would need to replace this function with actual video generation using an API.
     function generateVideo() {
             const selectedCharacters = Array.from(document.getElementById('characters').selectedOptions).map(option => option.value);
