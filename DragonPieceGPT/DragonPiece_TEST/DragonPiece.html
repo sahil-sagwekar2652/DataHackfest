@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="DragonPiece.css" />
+<link rel="icon" type="img/png" href="DragonPieceIcon.png" sizes="32x32">   
     <title>DragonPiece GPT</title>
     <style>
         .center {
@@ -11,13 +12,77 @@
             align-content: center;
         }
     
-       
+        label{
+            color: #d8bc21;
+            font-weight: bold;
+
+        }
+   /* Style for the navigation bar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        /* Style for the navigation links */
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 10px;
+        }
+
+        /* Style for the dropdown menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 100px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style for dropdown links */
+        .dropdown-content a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        .top-element {
+          
+            padding: 10px; /* Padding for spacing */
+            text-align: center; /* Center the content horizontally */
+        }
     </style>
 </head>
 <body>
-    
+<div class="top-element">
+    <div class="navbar">
+            
+            <div class="dropdown">
+            <a href="#">***</a>
+            <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Page content -->
+    <div style="padding: 20px;">
+
     <div class="center">
-    <h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT"></a></h1>
+    <h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT" class="image-setting"></a></h1>
 
      
     <!--
@@ -35,15 +100,43 @@
     </div>
 -->
         <p>
-    <label for="user_init_text">Write a scenario and let DragonPiece GPT do the rest!</label></p>
+    
+  <!-- I replaced 'response' with data.output and used 'user_init_text for all supposed inputs' -->  
+    <form id="user_init_text" action="user_init_text" method="post"></form>
+    <label for="user_init_text" style="font-size: 24px;">Write a scenario and let DragonPiece GPT do the rest!</label></p>
     <div class="box">
-    <textarea placeholder="Enter your scenario here." id="user_init_text" rows="7" cols="115"></textarea>
+    <textarea class="text-color" style="background-color: black; width:410px; height: 100px;" placeholder="Enter your scenario here." id="user_init_text"></textarea>
     </div>    
   
  
-    <p><button onclick="GenerateRequest()">Generate Unique Creation</button></p>
+    <p><button type="submit" onclick="GenerateRequest()" style="font-size: 14px; font-weight: bold; background-color: #333; color:blanchedalmond;">Generate Unique Creation</button></p>
 
-    
+
+    </form>
+
+    <div id="data.output"></div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const form = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: form
+            })
+            .then(data.output => data.output.json())
+            .then(data => {
+                document.getElementById('data.output').textContent = JSON.stringify(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
+
 <!--
      <div id="output-video"> -->
         <!-- Placeholder for the generated video -->

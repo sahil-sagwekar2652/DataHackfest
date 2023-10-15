@@ -4,11 +4,25 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #1f1f1f;
+}
+.image-setting {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: auto;
+  width: 800px;
+
+
 }
 
 textarea::placeholder {
   font-size: 1rem;
-  color: black;
+  color: rgb(214, 173, 60);
   font-family: sans-serif;
 }
 
@@ -82,7 +96,12 @@ textarea::placeholder {
     border: 1px solid #ccc;
 }
 
-
+.text-color {
+            color: #fcd278;
+            font-size: 12pt;
+}
  .videobox {
     max-width: 100%;
 }
+
+
