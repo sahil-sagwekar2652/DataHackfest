@@ -1,187 +1,254 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="DragonPiece.css" />
-<link rel="icon" type="img/png" href="DragonPieceIcon.png" sizes="32x32">   
-    <title>DragonPiece GPT</title>
-    <style>
-        .center {
-            margin: 0 auto;
-            width: 75%; /* Adjust width as needed */
-            text-align: center;
-            align-content: center;
-        }
-    
-        label{
-            color: #d8bc21;
-            font-weight: bold;
+	<link rel="stylesheet" type="text/css" href="DragonPiece.css" />
+	<link rel="icon" type="image/png" href="DragonPieceIcon.png" sizes="32x32">
+	<title>DragonPiece GPT</title>
+	<style>
+		.center {
+			margin: 0 auto;
+			width: 75%;
+			text-align: center;
+		}
 
-        }
-   /* Style for the navigation bar */
-        .navbar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
+		label {
+			color: #d8bc21;
+			font-weight: bold;
+		}
 
-        /* Style for the navigation links */
-        .navbar a {
-            text-decoration: none;
-            color: #fff;
-            margin: 0 10px;
-        }
+		.navbar {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+		}
 
-        /* Style for the dropdown menu */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+		.navbar a {
+			text-decoration: none;
+			color: #fff;
+			margin: 0 10px;
+		}
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            min-width: 100px;
-            z-index: 1;
-        }
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #333;
+			min-width: 100px;
+			z-index: 1;
+		}
 
-        /* Style for dropdown links */
-        .dropdown-content a {
-            color: #fff;
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-        }
-        .top-element {
-          
-            padding: 10px; /* Padding for spacing */
-            text-align: center; /* Center the content horizontally */
-        }
-    </style>
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.top-element {
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
 </head>
+
 <body>
-<div class="top-element">
-    <div class="navbar">
-            
-            <div class="dropdown">
-            <a href="#">***</a>
-            <div class="dropdown-content">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
-        
-    </div>
+	<div class="top-element">
+		<div class="navbar">
+			<div class="dropdown">
+				<a href="#">***</a>
+				<div class="dropdown-content">
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>
+				</div>
+			</div>
+		</div>
 
-    <!-- Page content -->
-    <div style="padding: 20px;">
+		<!-- Page content -->
+		<div style="padding: 20px;">
+			<div class="center">
+				<h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT"
+							class="image-setting"></a></h1>
 
-    <div class="center">
-    <h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT" class="image-setting"></a></h1>
+				<form id="myForm" action="https://bf07-35-230-5-179.ngrok-free.app/generate" method="post">
+					<p>
+						<label for="user_init_text" style="font-size: 24px;">Write a scenario and let DragonPiece GPT do
+							the rest!</label>
+					</p>
+					<div class="box">
+						<textarea class="text-color" style="background-color: black; width: 410px; height: 100px;"
+							placeholder="Enter your scenario here." name="user_init_text"
+							id="user_init_text"></textarea>
+					</div>
+					<p><button type="submit"
+							style="font-size: 14px; font-weight: bold; background-color: #333; color: blanchedalmond;">Generate
+							Unique Creation</button></p>
+				</form>
 
-     
-    <!--
-        <label for="characters">Select Characters:</label>
-    
-    <div class="centered-element">
-    <select id="characters" class="custom-select" multiple>
-        <option value="character1">Goku</option>
-        <option value="character2">Vegeta</option>
-        <option value="character3">Krillin</option>
-        <option value="character4">Luffy</option>
-        <option value="character5">Zoro</option>
-        <option value="character6">Sanji</option>
-      </select>
-    </div>
--->
-        <p>
-    
-  <!-- I replaced 'response' with data.output and used 'user_init_text for all supposed inputs' -->  
-    <form id="user_init_text" action="user_init_text" method="post"></form>
-    <label for="user_init_text" style="font-size: 24px;">Write a scenario and let DragonPiece GPT do the rest!</label></p>
-    <div class="box">
-    <textarea class="text-color" style="background-color: black; width:410px; height: 100px;" placeholder="Enter your scenario here." id="user_init_text"></textarea>
-    </div>    
-  
- 
-    <p><button type="submit" onclick="GenerateRequest()" style="font-size: 14px; font-weight: bold; background-color: #333; color:blanchedalmond;">Generate Unique Creation</button></p>
+				<div id="data_output"></div>
 
+				<script>
+					document.getElementById('myForm').addEventListener('submit', function (e) {
+						e.preventDefault();
 
-    </form>
+						const form = new FormData(this);
+						console.log(form)
+						const data = {
+							userId: "1",
+							user_name: "aaa",
+							user_init_text: form.get('user_init_text'),
+						};
 
-    <div id="data.output"></div>
-
-    <script>
-        document.getElementById('myForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const form = new FormData(this);
-
-            fetch(this.action, {
-                method: 'POST',
-                body: form
-            })
-            .then(data.output => data.output.json())
-            .then(data => {
-                document.getElementById('data.output').textContent = JSON.stringify(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
-
-
-<!--
-     <div id="output-video"> -->
-        <!-- Placeholder for the generated video -->
-    <!-- </div>
-    -->
-    <script>
-
-        // You would need to replace this function with actual video generation using an API.
-        //function generateVideo() {
-         // const selectedCharacters = Array.from(document.getElementById('characters').selectedOptions).map(option => option.value);
-         //   const user_init_text = document.getElementById('user_init_text').value;
-
-            // Placeholder for video generation using AI
-         //   const videoUrl = generateVideoUsingAI(user_init_text); //(selectedCharacters, scenario);
-
-            // Display the generated video on the page
-         //   const outputVideo = document.getElementById('output-video');
-         //   outputVideo.innerHTML = `<iframe width="560" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-        //}
-         // Make a GET request to the Python API
-         fetch('https://your-python-api-url')
-            .then(response => response.json())
-            .then(data => {
-                // Process and display the data
-                document.getElementById('user_init_text').textContent = JSON.stringify(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        // Replace this function with a real API call to generate a video
-        //function generateVideoUsingAI(user_init_text)// (characters, scenario) 
-        //{
-            // This is a placeholder for the actual API call
-            // You would send the characters and scenario to your AI service
-            // and receive a URL to the generated video in response.
-            // For example, you might use fetch() to make an API request.
-            // This is highly simplified.
-         //   return "https://example.com/generated-video.mp4";
-        //}
-    </script>
-    </div>
-    <script type="text/javascript" src="jquery.js">
-    </script>
-    <script type="text/javascript" src="DragonPiece.js">
-    </script>
-
+						fetch('https://78bf-35-230-5-179.ngrok-free.app/generate', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify(data)
+						})
+							.then(response => response.json())
+							.then(responseData => {
+								// Process and display the response data
+								document.getElementById('data_output').textContent = JSON.stringify(responseData);
+							})
+							.catch(error => {
+								console.error('Error:', error);
+							});
+					});
+				</script>
+			</div>
+		</div>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="DragonPiece.js"></script>
 </body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="DragonPiece.css" />
+	<link rel="icon" type="image/png" href="DragonPieceIcon.png" sizes="32x32">
+	<title>DragonPiece GPT</title>
+	<style>
+		.center {
+			margin: 0 auto;
+			width: 75%;
+			text-align: center;
+		}
+
+		label {
+			color: #d8bc21;
+			font-weight: bold;
+		}
+
+		.navbar {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+		}
+
+		.navbar a {
+			text-decoration: none;
+			color: #fff;
+			margin: 0 10px;
+		}
+
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #333;
+			min-width: 100px;
+			z-index: 1;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.top-element {
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="top-element">
+		<div class="navbar">
+			<div class="dropdown">
+				<a href="#">***</a>
+				<div class="dropdown-content">
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Page content -->
+		<div style="padding: 20px;">
+			<div class="center">
+				<h1><a href="/"><img src="DragonPiece.png" style="width: 75%;" alt="DragonPiece GPT"
+							class="image-setting"></a></h1>
+
+				<form id="myForm" action="https://bf07-35-230-5-179.ngrok-free.app/generate" method="post">
+					<p>
+						<label for="user_init_text" style="font-size: 24px;">Write a scenario and let DragonPiece GPT do
+							the rest!</label>
+					</p>
+					<div class="box">
+						<textarea class="text-color" style="background-color: black; width: 410px; height: 100px;"
+							placeholder="Enter your scenario here." name="user_init_text"
+							id="user_init_text"></textarea>
+					</div>
+					<p><button type="submit"
+							style="font-size: 14px; font-weight: bold; background-color: #333; color: blanchedalmond;">Generate
+							Unique Creation</button></p>
+				</form>
+
+				<div id="data_output"></div>
+
+				<script>
+					document.getElementById('myForm').addEventListener('submit', function (e) {
+						e.preventDefault();
+
+						const form = new FormData(this);
+						console.log(form)
+						const data = {
+							userId: "1",
+							user_name: "aaa",
+							user_init_text: form.get('user_init_text'),
+						};
+
+						fetch('https://78bf-35-230-5-179.ngrok-free.app/generate', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify(data)
+						})
+							.then(response => response.json())
+							.then(responseData => {
+								// Process and display the response data
+								document.getElementById('data_output').textContent = JSON.stringify(responseData);
+							})
+							.catch(error => {
+								console.error('Error:', error);
+							});
+					});
+				</script>
+			</div>
+		</div>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="DragonPiece.js"></script>
+</body>
+
 </html>
