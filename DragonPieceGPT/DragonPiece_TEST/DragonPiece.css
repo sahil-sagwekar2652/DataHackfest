@@ -5,19 +5,6 @@ body {
     height: 100vh;
     margin: 0;
 }
-.image-setting {
-  display: block;
-  margin: 0 auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  height: auto;
-  width: 800px;
-
-
-}
 
 textarea::placeholder {
   font-size: 1rem;
