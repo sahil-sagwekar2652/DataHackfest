@@ -9,7 +9,7 @@ from langchain import HuggingFaceHub, LLMChain, PromptTemplate
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline, AutoModelWithLMHead
 import torch
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = ""
 
 app = FastAPI()
 
